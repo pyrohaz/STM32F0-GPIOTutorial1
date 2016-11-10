@@ -81,8 +81,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t read, tog = 0;
-  uint32_t msl = 0;
+  uint8_t read;
+
   while (1)
   {
   /* USER CODE END WHILE */
@@ -90,13 +90,7 @@ int main(void)
   /* USER CODE BEGIN 3 */
 	  read = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, read);
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, tog);
-
-	  if((HAL_GetTick() - msl) > 100){
-		  msl = HAL_GetTick();
-		  tog ^= 1;
-	  }
-
+	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, !read);
   }
   /* USER CODE END 3 */
 
